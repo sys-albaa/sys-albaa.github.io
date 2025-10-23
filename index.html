@@ -113,6 +113,59 @@
     border-top: 1px solid #3a3a3a;
   }
 
+  /* Language Selector */
+  .language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .language-dropdown {
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #c9c9c9;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+  }
+  
+  .language-dropdown:hover {
+    background-color: #353535;
+    border-color: #4a4a4a;
+  }
+  
+  .language-dropdown:focus {
+    outline: none;
+    border-color: #6a6a6a;
+  }
+  
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .flag-icon {
+    width: 16px;
+    height: 12px;
+    border-radius: 2px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .flag-it {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDA5MjQ2Ii8+CjxyZWN0IHg9IjUuMzMzMzMiIHdpZHRoPSI1LjMzMzMzIiBoZWlnaHQ9IjEyIiBmaWxsPSIjQ0VEMzAwIi8+CjxyZWN0IHg9IjEwLjY2NjciIHdpZHRoPSI1LjMzMzMzIiBoZWlnaHQ9IjEyIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=');
+  }
+  
+  .flag-en {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAyMzk1Ii8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxLjIiIGZpbGw9IldoaXRlIi8+CjxyZWN0IHg9IjAiIHk9IjIuNCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEuMiIgZmlsbD0iV2hpdGUiLz4KPHJlY3QgeD0iMCIgeT0iNC44IiB3aWR0aD0iMTYiIGhlaWdodD0iMS4yIiBmaWxsPSJXaGl0ZSIvPgo8cmVjdCB4PSIwIiB5PSI3LjIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxLjIiIGZpbGw9IldoaXRlIi8+CjxyZWN0IHg9IjAiIHk9IjkuNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEuMiIgZmlsbD0iV2hpdGUiLz4KPHJlY3QgeD0iMCIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxLjIiIGZpbGw9IldoaXRlIi8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI2LjQiIGhlaWdodD0iMTIiIGZpbGw9IiNGRjAwMDAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEuMiIgZmlsbD0iV2hpdGUiLz4KPHJlY3QgeD0iMCIgeT0iMi40IiB3aWR0aD0iMTYiIGhlaWdodD0iMS4yIiBmaWxsPSJXaGl0ZSIvPgo8cmVjdCB4PSIwIiB5PSI0LjgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxLjIiIGZpbGw9IldoaXRlIi8+CjxyZWN0IHg9IjAiIHk9IjcuMiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEuMiIgZmlsbD0iV2hpdGUiLz4KPHJlY3QgeD0iMCIgeT0iOS42IiB3aWR0aD0iMTYiIGhlaWdodD0iMS4yIiBmaWxsPSJXaGl0ZSIvPgo8cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEuMiIgZmlsbD0iV2hpdGUiLz4KPC9zdmc+Cg==');
+  }
+
   /* Animazioni */
   @keyframes gradientMove {
     0% { background-position: 0% 50%; }
@@ -123,49 +176,130 @@
 </head>
 <body>
 
+<!-- Language Selector -->
+<div class="language-selector">
+  <select id="languageSelect" class="language-dropdown">
+    <option value="en" class="language-option">
+      <span class="flag-icon flag-en"></span> English
+    </option>
+    <option value="it" class="language-option">
+      <span class="flag-icon flag-it"></span> Italiano
+    </option>
+  </select>
+</div>
+
 <header>
-  <h1>albaa</h1>
-  <p>Developer & technology enthusiast exploring systems, optimization, and digital solutions.  
+  <h1 data-translate="title">albaa</h1>
+  <p data-translate="subtitle">Developer & technology enthusiast exploring systems, optimization, and digital solutions.  
   Focused on building clean, efficient, and reliable tools.</p>
 </header>
 
 <section id="about">
-  <h2>About Me</h2>
-  <p>I’m a 16-year-old student passionate about computer systems, Linux environments, and software optimization.  
+  <h2 data-translate="about-title">About Me</h2>
+  <p data-translate="about-text">I'm a 16-year-old student passionate about computer systems, Linux environments, and software optimization.  
   I enjoy understanding deeply how systems work and creating tools that are clean, modular, and reliable.</p>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2 data-translate="projects-title">Projects</h2>
   <div class="projects">
     <div class="project-card">
       <h3>PingBot</h3>
-      <p>A lightweight Discord bot written in JavaScript. Designed for modular commands and reliability, suitable for experimenting with APIs and automation.</p>
-      <a href="https://github.com/sys-albaa/PingBot">View on GitHub</a>
+      <p data-translate="pingbot-desc">A lightweight Discord bot written in JavaScript. Designed for modular commands and reliability, suitable for experimenting with APIs and automation.</p>
+      <a href="https://github.com/sys-albaa/PingBot" data-translate="view-github">View on GitHub</a>
     </div>
     <div class="project-card">
       <h3>albaa.github.io</h3>
-      <p>Personal portfolio built with GitHub Pages. Minimal, responsive design with focus on readability and professional presentation.</p>
-      <a href="https://github.com/sys-albaa/sys-albaa.github.io">View Repository</a>
+      <p data-translate="portfolio-desc">Personal portfolio built with GitHub Pages. Minimal, responsive design with focus on readability and professional presentation.</p>
+      <a href="https://github.com/sys-albaa/sys-albaa.github.io" data-translate="view-repo">View Repository</a>
     </div>
     <div class="project-card">
       <h3>SyS-BenchMark</h3>
-      <p>System benchmarking tool for performance analysis and optimization. Designed to provide comprehensive metrics for system evaluation and comparison.</p>
-      <a href="https://github.com/sys-albaa/SyS-BenchMark">View on GitHub</a>
+      <p data-translate="benchmark-desc">System benchmarking tool for performance analysis and optimization. Designed to provide comprehensive metrics for system evaluation and comparison.</p>
+      <a href="https://github.com/sys-albaa/SyS-BenchMark" data-translate="view-github">View on GitHub</a>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
-  <p>Find me on <a href="https://github.com/sys-albaa">GitHub</a> or via Discord: <code>inalbaawetrust</code>.</p>
+  <h2 data-translate="contact-title">Contact</h2>
+  <p data-translate="contact-text">Find me on <a href="https://github.com/sys-albaa">GitHub</a> or via Discord: <code>inalbaawetrust</code>.</p>
 </section>
 
 <footer>
-  &copy; 2025 albaa. All rights reserved.
+  <span data-translate="footer">&copy; 2025 albaa. All rights reserved.</span>
 </footer>
 
 <script>
+  // Traduzioni
+  const translations = {
+    en: {
+      'title': 'albaa',
+      'subtitle': 'Developer & technology enthusiast exploring systems, optimization, and digital solutions. Focused on building clean, efficient, and reliable tools.',
+      'about-title': 'About Me',
+      'about-text': "I'm a 16-year-old student passionate about computer systems, Linux environments, and software optimization. I enjoy understanding deeply how systems work and creating tools that are clean, modular, and reliable.",
+      'projects-title': 'Projects',
+      'pingbot-desc': 'A lightweight Discord bot written in JavaScript. Designed for modular commands and reliability, suitable for experimenting with APIs and automation.',
+      'portfolio-desc': 'Personal portfolio built with GitHub Pages. Minimal, responsive design with focus on readability and professional presentation.',
+      'benchmark-desc': 'System benchmarking tool for performance analysis and optimization. Designed to provide comprehensive metrics for system evaluation and comparison.',
+      'view-github': 'View on GitHub',
+      'view-repo': 'View Repository',
+      'contact-title': 'Contact',
+      'contact-text': 'Find me on GitHub or via Discord: inalbaawetrust.',
+      'footer': '© 2025 albaa. All rights reserved.'
+    },
+    it: {
+      'title': 'albaa',
+      'subtitle': 'Sviluppatore ed entusiasta della tecnologia che esplora sistemi, ottimizzazione e soluzioni digitali. Focalizzato sulla creazione di strumenti puliti, efficienti e affidabili.',
+      'about-title': 'Chi Sono',
+      'about-text': 'Sono uno studente di 16 anni appassionato di sistemi informatici, ambienti Linux e ottimizzazione del software. Mi piace capire profondamente come funzionano i sistemi e creare strumenti puliti, modulari e affidabili.',
+      'projects-title': 'Progetti',
+      'pingbot-desc': 'Un bot Discord leggero scritto in JavaScript. Progettato per comandi modulari e affidabilità, adatto per sperimentare con API e automazione.',
+      'portfolio-desc': 'Portfolio personale costruito con GitHub Pages. Design minimale e responsive con focus su leggibilità e presentazione professionale.',
+      'benchmark-desc': 'Strumento di benchmarking di sistema per analisi delle prestazioni e ottimizzazione. Progettato per fornire metriche complete per valutazione e confronto dei sistemi.',
+      'view-github': 'Visualizza su GitHub',
+      'view-repo': 'Visualizza Repository',
+      'contact-title': 'Contatti',
+      'contact-text': 'Trovami su GitHub o via Discord: inalbaawetrust.',
+      'footer': '© 2025 albaa. Tutti i diritti riservati.'
+    }
+  };
+
+  // Funzione per tradurre il contenuto
+  function translatePage(language) {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+      const key = element.getAttribute('data-translate');
+      if (translations[language] && translations[language][key]) {
+        element.textContent = translations[language][key];
+      }
+    });
+    
+    // Aggiorna l'attributo lang dell'html
+    document.documentElement.lang = language;
+    
+    // Salva la preferenza
+    localStorage.setItem('selectedLanguage', language);
+  }
+
+  // Inizializzazione
+  document.addEventListener('DOMContentLoaded', function() {
+    // Carica la lingua salvata o usa l'inglese come default
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    const languageSelect = document.getElementById('languageSelect');
+    
+    // Imposta il valore del selettore
+    languageSelect.value = savedLanguage;
+    
+    // Traduci la pagina
+    translatePage(savedLanguage);
+    
+    // Event listener per il cambio di lingua
+    languageSelect.addEventListener('change', function() {
+      translatePage(this.value);
+    });
+  });
+
   // Fade-in delle sezioni con IntersectionObserver
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
